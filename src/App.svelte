@@ -14,8 +14,6 @@
 
 </style>
 
-
 <Home></Home>
-
 
 <h2 id="betatag"> DEVELOPMENT VERSION </h2>
