@@ -1,5 +1,5 @@
 .vscode
 node_modules
-.private
+/private
 .DS_Store
 public/.DS_Store
