@@ -11,7 +11,7 @@
     }
 </style>
 
-<img id="title" src="/flagguessrdark.png" alt="flagguessr">
+<img id="title" src="assets/flagguessrdark.png" alt="flagguessr">
 <button> start </button>
 
 
