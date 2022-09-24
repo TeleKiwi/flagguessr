@@ -1,7 +1,5 @@
 .vscode
 node_modules
 .private
-package.json
-package-lock.json
 .DS_Store
 public/.DS_Store
