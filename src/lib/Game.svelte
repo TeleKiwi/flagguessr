@@ -41,7 +41,7 @@
 <img id="country" src="{countryImg}" alt="country"/>
 
 <div class="userAnswer">
-    <form on:submit|preventDefault="{submitAnswer}">
+    <form spellcheck="false" on:submit|preventDefault="{submitAnswer}">
         <input type="text" bind:value="{answer}"> 
     </form>
 </div>
