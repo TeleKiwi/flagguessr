@@ -75,6 +75,11 @@
         }
         
     }
+
+    function skip() {
+        streak = -1;
+        generate();
+    }
 </script>
 
 <style lang="scss">
@@ -110,3 +115,4 @@
 </div>
 
 <button id="hint" on:click|preventDefault="{giveHint}"> {hintText} </button>
+<button on:click|preventDefault="{skip}"> I don't know</button>
