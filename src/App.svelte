@@ -4,6 +4,7 @@
     import Home from "./lib/Home.svelte";
     import { status } from "./stores"
 
+    status.set("home");
 </script>
 <style>
     #betatag {
