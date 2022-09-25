@@ -23,18 +23,16 @@
                 status.set("home");
             }
         } else {
-            let bits = "";
+            let bits = 0;
             correct.forEach((e) => {
                 if(e.toLowerCase() === answer) {
-                    bits += "1"
-                } else {
-                    bits += "0";
+                    bits++
                 }
 
-                if(bits.match(/1/)) {
-                    generate();
-                } else {
+                if(bits == 0) {
                     status.set("home");
+                } else {
+                    generate();
                 }
             })
         }
