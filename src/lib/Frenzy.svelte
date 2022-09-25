@@ -4,15 +4,10 @@
 
     let streak = -1;
 
-    let hint = false;
-    let hintText = "Hint";
-
     let country = "";
     let countryImg;
 
     function generate() {
-        hint = false;
-        hintText = "Hint";
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
@@ -59,28 +54,7 @@
     }
 
     
-    function giveHint() {
-        streak = 0;
-        if(hint) {
-            hint = !hint;
-            hintText = "Hint";
-        } else {
-            hint = !hint;
-            let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
-            if(typeof correct === "string") {
-                hintText = correct[0];
-            } else {
-                hintText = correct[0][0];
-            }
-        }
-        
-    }
 
-    function skip() {
-        streak = -1;
-        generate();
-        answer = "";
-    }
 </script>
 
 <style lang="scss">
@@ -99,9 +73,6 @@
             font-weight: 400;
     }
 
-    #hint {
-        margin-top: 5px;
-    }
 </style>
 
 <h2> Using hints will RESET your streak!</h2>
@@ -114,6 +85,3 @@
         <input type="text" bind:value="{answer}"> 
     </form>
 </div>
-
-<button id="hint" on:click|preventDefault="{giveHint}"> {hintText} </button>
-<button on:click|preventDefault="{skip}"> I don't know</button>
