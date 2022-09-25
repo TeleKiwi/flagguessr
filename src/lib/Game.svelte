@@ -34,7 +34,10 @@
             if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
-                
+                status.set("home");
+                if(streak > $highScore) { highScore.set(streak); }
+                localStorage.setItem("highscore", $highScore.toString())
+                streak = 0;
             }
         } else {
             let check = false;
@@ -57,6 +60,7 @@
 
     
     function giveHint() {
+        streak = 0;
         if(hint) {
             hint = !hint;
             hintText = "Hint";
@@ -94,6 +98,7 @@
     }
 </style>
 
+<h2> Using hints will RESET your streak!</h2>
 <h2> Streak: {streak} </h2>
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
