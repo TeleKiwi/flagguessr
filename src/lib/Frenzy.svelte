@@ -1,5 +1,5 @@
 <script defer>
-    import { status, highScore } from "../stores";
+    import { status, frenzyHighScore } from "../stores";
     import { JSONList } from "../../public/countryList";
 
     let streak = -1;
@@ -7,7 +7,21 @@
     let country = "";
     let countryImg;
 
+    let seconds = 10;
+
     function generate() {
+        seconds = 10;
+        let timer = setInterval(() => {
+            if(seconds == 0) {
+                status.set("home");
+                if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
+                localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
+                streak = 0;
+                clearInterval(timer);
+            } else {
+                seconds--;
+            }
+        }, 1000)
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
@@ -21,8 +35,8 @@
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(answer === null) { 
             status.set("home");
-            if(streak > $highScore) { highScore.set(streak); }
-            localStorage.setItem("highscore", $highScore.toString())
+            if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
+            localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
             streak = 0;
         }
         if(typeof correct === "string") {
@@ -30,8 +44,8 @@
                 generate();
             } else {
                 status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
+                if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
+                localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
                 streak = 0;
             }
         } else {
@@ -43,8 +57,8 @@
             })
             if(!check) {
                 status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
+                if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
+                localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
                 streak = 0;
             } else {
                 generate();
@@ -75,8 +89,16 @@
 
 </style>
 
-<h2> Using hints will RESET your streak!</h2>
+{#if seconds == 1}
+<h2> 1 second remains! </h2>
+{:else}
+<h2> {seconds} seconds remain! </h2>
+{/if}
+
+
+{#if streak > 0}
 <h2> Streak: {streak} </h2>
+{/if}
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
 

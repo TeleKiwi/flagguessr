@@ -4,7 +4,7 @@
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import Warn from "./lib/Warn.svelte";
-    import { highScore, status } from "./stores"
+    import { frenzyHighScore, highScore, status } from "./stores"
 
     status.set("home");
 </script>
@@ -16,6 +16,10 @@
         left: 0;
         margin-left: 40px;
         margin-bottom: 40px;
+    }
+
+    #frenzyh {
+        color: red;
     }
 
 </style>
@@ -34,6 +38,9 @@
 
 {#if $highScore > 0 && $status == "home"}
 <h2> High score: {$highScore} </h2>
+{/if}
+{#if $highScore > 0 && $status == "home"}
+<h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
 {/if}
 
 

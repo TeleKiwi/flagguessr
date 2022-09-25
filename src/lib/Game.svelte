@@ -105,7 +105,11 @@
 </style>
 
 <h2> Using hints will RESET your streak!</h2>
+
+{#if streak > 0}
 <h2> Streak: {streak} </h2>
+{/if}
+
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
 
