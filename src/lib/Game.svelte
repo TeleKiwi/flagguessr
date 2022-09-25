@@ -1,5 +1,5 @@
 <script defer>
-    import { status } from "../stores";
+    import { status, highScore } from "../stores";
     import { JSONList } from "../../public/countryList";
 
     let streak = -1;
@@ -24,6 +24,8 @@
                 generate();
             } else {
                 status.set("home");
+                if(streak > $highScore) { highScore.set(streak); }
+                localStorage.setItem("highscore", $highScore.toString())
                 streak = 0;
             }
         } else {
@@ -35,6 +37,8 @@
             })
             if(!check) {
                 status.set("home");
+                if(streak > $highScore) { highScore.set(streak); }
+                localStorage.setItem("highscore", $highScore.toString())
                 streak = 0;
             } else {
                 generate();

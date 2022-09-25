@@ -2,7 +2,7 @@
     import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
-    import { status } from "./stores"
+    import { highScore, status } from "./stores"
 
     status.set("home");
 </script>
@@ -25,5 +25,10 @@
 {:else}
 <Error></Error>
 {/if}
+
+{#if $highScore > 0}
+<h2> High score: {$highScore} </h2>
+{/if}
+
 
 <h2 id="betatag"> DEVELOPMENT VERSION </h2>
