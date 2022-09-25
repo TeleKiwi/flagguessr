@@ -1,7 +1,8 @@
-<script>
+<script defer>
+    import { status } from "../stores";
     import { JSONList } from "../../private/countryList";
 
-    let country;
+    let country = "";
     let countryImg;
 
     function generate() {
@@ -11,11 +12,32 @@
 
     generate();
     
-    let answer;
+    let answer = "";
 
     function submitAnswer() {
-        // temp
-        generate();
+        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        if(typeof correct === "string") {
+            if(correct.toLowerCase() === answer) {
+                generate();
+            } else {
+                status.set("home");
+            }
+        } else {
+            let bits = "";
+            correct.forEach((e) => {
+                if(e.toLowerCase() === answer) {
+                    bits += "1"
+                } else {
+                    bits += "0";
+                }
+
+                if(bits.match(/1/)) {
+                    generate();
+                } else {
+                    status.set("home");
+                }
+            })
+        }
         answer = "";
     }
 </script>
