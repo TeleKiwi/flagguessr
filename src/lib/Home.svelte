@@ -2,8 +2,8 @@
     import { status } from "../stores";
 
     function startGame() {
-        status.set("play");
-    }
+        status.set("menu");
+    } 
 
 </script>
 <style lang="scss">

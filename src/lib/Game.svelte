@@ -79,6 +79,7 @@
     function skip() {
         streak = -1;
         generate();
+        answer = "";
     }
 </script>
 

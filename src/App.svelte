@@ -2,6 +2,7 @@
     import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
+    import Menu from "./lib/Menu.svelte";
     import { highScore, status } from "./stores"
 
     status.set("home");
@@ -22,6 +23,8 @@
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
+{:else if $status == "menu"}
+<Menu></Menu>
 {:else}
 <Error></Error>
 {/if}
