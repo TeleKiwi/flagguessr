@@ -8,20 +8,30 @@
     let countryImg;
 
     let seconds = 10;
+    let timer = setInterval(() => {
+        if(seconds == 0) {
+            resetFunc();
+        } else {
+            seconds--;
+        }
+    }, 1000)
+
+    
+    
+    let resetFunc = function() {
+        clearInterval(timer);
+        seconds = 10;
+        status.set("home");
+        if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
+        localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
+        streak = 0;
+    }
+
+    
 
     function generate() {
+        clearInterval(timer);
         seconds = 10;
-        let timer = setInterval(() => {
-            if(seconds == 0) {
-                status.set("home");
-                if(streak > $frenzyHighScore) { frenzyHighScore.set(streak); }
-                localStorage.setItem("frenzyhighscore", $frenzyHighScore.toString())
-                streak = 0;
-                clearInterval(timer);
-            } else {
-                seconds--;
-            }
-        }, 1000)
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
