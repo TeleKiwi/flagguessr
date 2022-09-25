@@ -2,9 +2,9 @@
     import { status } from "../stores";
 
     function startGame() {
-        status.set("ahjdshdfjhsaghjd");
+        status.set("play");
     }
-    
+
 </script>
 <style lang="scss">
     #title {

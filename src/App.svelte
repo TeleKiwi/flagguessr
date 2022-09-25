@@ -1,5 +1,6 @@
 <script>
     import Error from "./lib/Error.svelte";
+    import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import { status } from "./stores"
 
@@ -18,6 +19,8 @@
 
 {#if $status == "home"}
 <Home></Home>
+{:else if $status == "play"}
+<Game></Game>
 {:else}
 <Error></Error>
 {/if}
