@@ -1,119 +1,40 @@
-<script defer>
-    import { status, highScore } from "../stores";
-    import { JSONList } from "../../public/countryList";
+<script>
+    import Error from "./lib/Error.svelte";
+    import Frenzy from "./lib/Frenzy.svelte";
+    import Game from "./lib/Game.svelte";
+    import Home from "./lib/Home.svelte";
+    import Warn from "./lib/Warn.svelte";
+    import { highScore, status } from "./stores"
 
-    let streak = -1;
-
-    let hint = false;
-    let hintText = "Hint";
-
-    let country = "";
-    let countryImg;
-
-    function generate() {
-        hint = false;
-        hintText = "Hint";
-        streak++
-        country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
-        countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
-    }
-
-    generate();
-    
-    let answer = "";
-
-    function submitAnswer() {
-        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
-        if(answer === null) { 
-            status.set("home");
-            if(streak > $highScore) { highScore.set(streak); }
-            localStorage.setItem("highscore", $highScore.toString())
-            streak = 0;
-        }
-        if(typeof correct === "string") {
-            if(correct.toLowerCase() === answer.toLowerCase()) {
-                generate();
-            } else {
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
-            }
-        } else {
-            let check = false;
-            correct.forEach((e) => {
-                if(e.toLowerCase() === answer.toLowerCase()) {
-                    check = true;
-                }
-            })
-            if(!check) {
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
-            } else {
-                generate();
-            }
-        }
-        answer = "";
-    }
-
-    
-    function giveHint() {
-        streak = 0;
-        if(hint) {
-            hint = !hint;
-            hintText = "Hint";
-        } else {
-            hint = !hint;
-            let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
-            if(typeof correct === "string") {
-                hintText = correct[0];
-            } else {
-                hintText = correct[0][0];
-            }
-        }
-        
-    }
-
-    function skip() {
-        streak = -1;
-        generate();
-        answer = "";
-    }
+    status.set("home");
 </script>
-
-<style lang="scss">
-    #country {
-        position: relative;
-        bottom: 30px;
+<style>
+    #betatag {
+        font-weight: 700;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-left: 40px;
+        margin-bottom: 40px;
     }
 
-    .userAnswer {
-        display: block;
-    }
-
-    .userAnswer input {
-            padding-block: 5px;
-            font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-            font-weight: 400;
-    }
-
-    #hint {
-        margin-top: 5px;
-    }
 </style>
 
-<h2> Using hints will RESET your streak!</h2>
-<h2> Streak: {streak} </h2>
-<h1> What country is this? </h1>
-<img id="country" src="{countryImg}" alt="country"/>
+{#if $status == "home"}
+<Home></Home>
+{:else if $status == "play"}
+<Game></Game>
+{:else if $status == "frenzy"}
+<Frenzy></Frenzy>
+{:else if $status == "warn"}
+<Warn></Warn>
+{:else}
+<Error></Error>
+{/if}
 
-<div class="userAnswer">
-    <form spellcheck="false" on:submit|preventDefault="{submitAnswer}">
-        <input type="text" bind:value="{answer}"> 
-    </form>
-</div>
+{#if $highScore > 0 && $status == "home"}
+<h2> High score: {$highScore} </h2>
+{/if}
 
-<button id="hint" on:click|preventDefault="{giveHint}"> {hintText} </button>
-<button on:click|preventDefault="{skip}"> I don't know</button>
+
+<h2 id="betatag"> DEVELOPMENT VERSION </h2>
