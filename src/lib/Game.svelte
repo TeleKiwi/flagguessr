@@ -2,10 +2,13 @@
     import { status } from "../stores";
     import { JSONList } from "../../public/countryList";
 
+    let streak = -1;
+
     let country = "";
     let countryImg;
 
     function generate() {
+        streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
     }
@@ -21,20 +24,21 @@
                 generate();
             } else {
                 status.set("home");
+                streak = 0;
             }
         } else {
-            let bits = 0;
+            let check = false;
             correct.forEach((e) => {
                 if(e.toLowerCase() === answer) {
-                    bits++
-                }
-
-                if(bits == 0) {
-                    status.set("home");
-                } else {
-                    generate();
+                    check = true;
                 }
             })
+            if(!check) {
+                status.set("home");
+                streak = 0;
+            } else {
+                generate();
+            }
         }
         answer = "";
     }
@@ -57,6 +61,7 @@
     }
 </style>
 
+<h2> Streak: {streak} </h2>
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
 
