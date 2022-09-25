@@ -1,6 +1,6 @@
 <script defer>
     import { status } from "../stores";
-    import { JSONList } from "../../private/countryList";
+    import { JSONList } from "../../public/countryList";
 
     let country = "";
     let countryImg;
