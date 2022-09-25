@@ -26,7 +26,7 @@
 <Error></Error>
 {/if}
 
-{#if $highScore > 0}
+{#if $highScore > 0 && $status == "home"}
 <h2> High score: {$highScore} </h2>
 {/if}
 
