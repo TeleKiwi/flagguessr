@@ -1,3 +1,11 @@
+<script>
+    import { status } from "../stores";
+
+    function startGame() {
+        status.set("ahjdshdfjhsaghjd");
+    }
+    
+</script>
 <style lang="scss">
     #title {
         display: flex;
@@ -12,7 +20,7 @@
 </style>
 
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
-<button> start </button>
+<button on:click|preventDefault="{startGame}"> start </button>
 
 
 

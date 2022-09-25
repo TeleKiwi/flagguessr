@@ -1,5 +1,6 @@
 <script>
     import Home from "./lib/Home.svelte";
+    import { status } from "./stores"
 
 </script>
 <style>
@@ -14,6 +15,15 @@
 
 </style>
 
+{#if $status == "home"}
 <Home></Home>
+{:else}
+<h1> Wait a sec, I'm not a flag!</h1>
+<p> If you're seeing this, something went very wrong.
+    Please make an issue on flagguessr's github!
+</p>
+<a href="https://github.com/TeleKiwi/flagguessr/issues/new"> Report an issue</a>
+{/if}
+
 
 <h2 id="betatag"> DEVELOPMENT VERSION </h2>
