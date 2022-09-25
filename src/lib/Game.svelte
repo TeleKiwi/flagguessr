@@ -20,7 +20,7 @@
     function submitAnswer() {
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(typeof correct === "string") {
-            if(correct.toLowerCase() === answer) {
+            if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
                 status.set("home");
@@ -29,7 +29,7 @@
         } else {
             let check = false;
             correct.forEach((e) => {
-                if(e.toLowerCase() === answer) {
+                if(e.toLowerCase() === answer.toLowerCase()) {
                     check = true;
                 }
             })
