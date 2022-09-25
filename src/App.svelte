@@ -24,7 +24,7 @@
 
 </style>
 
-<h2> 25/09/22 - frenzy mode is bugged. trying to fix it will make my brain explode.</h2>
+<h2> frenzy mode = bugged. won't fix for now.</h2>
 {#if $status == "home"}
 <Home></Home>
 {:else if $status == "play"}
