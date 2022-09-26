@@ -203,7 +203,7 @@ export const JSONList = {
     "LK": "Sri Lanka",
     "SD": "Sudan",
     "SR": "Suriname",
-    "SZ": "Swaziland",
+    "SZ": ["Swaziland", "Eswatini"],
     "SE": "Sweden",
     "CH": "Switzerland",
     "SY": ["Syrian Arab Republic", "Syria"],
