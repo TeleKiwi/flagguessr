@@ -44,7 +44,6 @@ import Error from "./lib/Error.svelte";
 <h2> High score: {$highScore} </h2>
 {/if}
 
-
 <!-- {#if $highScore > 0 && $status == "home"}
 <h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
 {/if} -->
