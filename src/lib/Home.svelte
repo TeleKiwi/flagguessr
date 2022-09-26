@@ -9,6 +9,10 @@
         status.set("warn");
     } 
 
+    function changelog() {
+        status.set("changelog");
+    } 
+
 </script>
 <style lang="scss">
     #title {
@@ -22,15 +26,18 @@
         padding: 30px
     }
 
-    #frenzy {
+    /* #frenzy {
         background-color: red;
         color: white;
-    }
+    } */
 </style>
 
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
-<button id="frenzy" on:click|preventDefault="{warn}"> Frenzy Mode </button>
+<button on:click|preventDefault="{changelog}"> View changelog </button>
+
+<!-- <button id="frenzy" on:click|preventDefault="{warn}"> Frenzy Mode </button> -->
+
 
 
 

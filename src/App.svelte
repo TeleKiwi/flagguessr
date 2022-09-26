@@ -1,6 +1,6 @@
 <script>
-    import Error from "./lib/Error.svelte";
-    import Frenzy from "./lib/Frenzy.svelte";
+    import Changelog from "./lib/Changelog.svelte";
+import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import Warn from "./lib/Warn.svelte";
@@ -18,21 +18,22 @@
         margin-bottom: 40px;
     }
 
-    #frenzyh {
+    /* #frenzyh {
         color: red;
-    }
+    } */
 
 </style>
 
-<h2> frenzy mode = bugged. won't fix for now.</h2>
+
 {#if $status == "home"}
+<h2> frenzy mode = bugged. won't fix for now.</h2>
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
-{:else if $status == "frenzy"}
-<Frenzy></Frenzy>
 {:else if $status == "warn"}
 <Warn></Warn>
+{:else if $status == "changelog"}
+<Changelog></Changelog>
 {:else}
 <Error></Error>
 {/if}
@@ -40,9 +41,10 @@
 {#if $highScore > 0 && $status == "home"}
 <h2> High score: {$highScore} </h2>
 {/if}
-{#if $highScore > 0 && $status == "home"}
+<!-- {#if $highScore > 0 && $status == "home"}
 <h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
-{/if}
+{/if} -->
 
 
-<h2 id="betatag"> DEVELOPMENT VERSION </h2>
+
+<h2 id="betatag"> v1.0-release_candidate_1 </h2>
