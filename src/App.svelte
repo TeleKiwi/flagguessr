@@ -51,4 +51,4 @@ import Error from "./lib/Error.svelte";
 
 
 
-<h2 id="betatag"> v1.0-release_candidate_2 </h2>
+<h2 id="betatag"> v1.0-release_candidate_3 </h2>
