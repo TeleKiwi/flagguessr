@@ -1,5 +1,5 @@
 <script>
-    import { status } from "../stores";
+    import { status, lastCorrectAnswer } from "../stores";
 
     function startGame() {
         status.set("play");
@@ -35,6 +35,7 @@
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
 <button on:click|preventDefault="{changelog}"> View changelog </button>
+
 
 <!-- <button id="frenzy" on:click|preventDefault="{warn}"> Frenzy Mode </button> -->
 

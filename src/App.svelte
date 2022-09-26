@@ -4,7 +4,7 @@ import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import Warn from "./lib/Warn.svelte";
-    import { frenzyHighScore, highScore, status } from "./stores"
+    import { frenzyHighScore, highScore, lastCorrectAnswer, status } from "./stores"
 
     status.set("home");
 </script>
@@ -26,7 +26,7 @@ import Error from "./lib/Error.svelte";
 
 
 {#if $status == "home"}
-<h2> frenzy mode = bugged. won't fix for now.</h2>
+<h2>{$lastCorrectAnswer}</h2>
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
@@ -38,13 +38,17 @@ import Error from "./lib/Error.svelte";
 <Error></Error>
 {/if}
 
+
+
 {#if $highScore > 0 && $status == "home"}
 <h2> High score: {$highScore} </h2>
 {/if}
+
+
 <!-- {#if $highScore > 0 && $status == "home"}
 <h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
 {/if} -->
 
 
 
-<h2 id="betatag"> v1.0-release_candidate_1 </h2>
+<h2 id="betatag"> v1.0-release_candidate_2 </h2>

@@ -1,5 +1,5 @@
 <script defer>
-    import { status, highScore } from "../stores";
+    import { status, highScore, lastCorrectAnswer } from "../stores";
     import { JSONList } from "../../public/countryList";
 
     let streak = -1;
@@ -25,6 +25,7 @@
     function submitAnswer() {
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(answer === null) { 
+            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
             status.set("home");
             if(streak > $highScore) { highScore.set(streak); }
             localStorage.setItem("highscore", $highScore.toString())
@@ -34,6 +35,7 @@
             if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
+                lastCorrectAnswer.set(`The correct answer was ${correct}.`)
                 status.set("home");
                 if(streak > $highScore) { highScore.set(streak); }
                 localStorage.setItem("highscore", $highScore.toString())
@@ -47,6 +49,7 @@
                 }
             })
             if(!check) {
+                lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
                 status.set("home");
                 if(streak > $highScore) { highScore.set(streak); }
                 localStorage.setItem("highscore", $highScore.toString())
