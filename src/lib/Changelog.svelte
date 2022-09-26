@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.0-release_candidate_3</h1>
+<h2> It fixes 1 bug. </h2>
+<li> Fixed the back button on this screen not saying "back". </li>
+
 <h1> v1.0-release_candidate_2</h1>
 <h2> This is a *very* small update. </h2>
 <li> You can now see what you got wrong after failing. </li>
@@ -21,4 +25,4 @@
     the current version number.
 </li>
 
-<button on:click|preventDefault="{goBack}"></button>
+<button on:click|preventDefault="{goBack}"> Back </button>
