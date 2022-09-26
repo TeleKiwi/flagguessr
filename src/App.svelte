@@ -50,4 +50,4 @@ import Error from "./lib/Error.svelte";
 
 
 
-<h2 id="betatag"> v1.0 </h2>
+<h2 id="betatag"> v1.0-mobile_support-dev1 </h2>
