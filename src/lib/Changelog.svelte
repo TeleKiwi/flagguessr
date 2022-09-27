@@ -7,6 +7,9 @@
     }
 </script>
 
+<h1> v1.0.1-hotfix </h1>
+<li> Fixed the Swiss flag being the only flag. </li>
+
 <h1> v1.0.1 </h1>
 <h2> No scrolling needed! </h2>
 <li> The Swiss flag has been downscaled. </li>
