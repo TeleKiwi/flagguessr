@@ -1,10 +1,10 @@
 <script>
     import Changelog from "./lib/Changelog.svelte";
-import Error from "./lib/Error.svelte";
+    import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import Warn from "./lib/Warn.svelte";
-    import { frenzyHighScore, highScore, lastCorrectAnswer, status } from "./stores"
+    import { highScore, lastCorrectAnswer, status } from "./stores"
 
     status.set("home");
 </script>
@@ -50,4 +50,4 @@ import Error from "./lib/Error.svelte";
 
 
 
-<h2 id="betatag"> v1.0 </h2>
+<h2 id="betatag"> v1.0.1 </h2>
