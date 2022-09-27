@@ -15,7 +15,7 @@
         hintText = "Hint";
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
-        if(country = "CH") {
+        if(country == "CH") {
             countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png`
         } else {
             countryImg = `https://flagpedia.net/data/flags/h580/${country.toLowerCase()}.webp`
