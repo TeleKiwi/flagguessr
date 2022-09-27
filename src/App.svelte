@@ -50,4 +50,4 @@
 
 
 
-<h2 id="betatag"> v1.0.1 </h2>
+<h2 id="betatag"> v1.0.2 </h2>
