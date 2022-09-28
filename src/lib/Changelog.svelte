@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.0.3 </h1>
+<li> Fixed buttons having black text in dark mode. </li>
+<li> You now see the previous correct answer with the IDK button. </li>
+
 <h1> v1.0.2 </h1>
 <h2> "I'm blinded by the lights!" - The Weeknd</h2>
 <li> Light mode is no longer forced if your desktop colour scheme is light mode. </li>

@@ -10,7 +10,10 @@
     let country = "";
     let countryImg;
 
+    let idk = false;
+
     function generate() {
+        idk = false;
         hint = false;
         hintText = "Hint";
         streak++
@@ -80,8 +83,16 @@
     }
 
     function skip() {
+        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        if(typeof correct === "string") {
+            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        } else {
+            lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
+        }
+        
         streak = -1;
         generate();
+        idk = true;
         answer = "";
     }
 </script>
@@ -111,6 +122,10 @@
 
 {#if streak > 0}
 <h2> Streak: {streak} </h2>
+{/if}
+
+{#if idk == true}
+<h2> {$lastCorrectAnswer} </h2>
 {/if}
 
 <h1> What country is this? </h1>
