@@ -4,8 +4,9 @@
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
     import Warn from "./lib/Warn.svelte";
-    import { highScore, lastCorrectAnswer, status } from "./stores"
+    import { highScore, lastCorrectAnswer, status, points } from "./stores"
 
+    if(localStorage.getItem("points") == null) { localStorage.setItem("points", "0"); }
     status.set("home");
 </script>
 <style>
@@ -44,10 +45,14 @@
 <h2> High score: {$highScore} </h2>
 {/if}
 
+{#if $status == "home"}
+<h2> Points: {$points}</h2>
+{/if}
+
 <!-- {#if $highScore > 0 && $status == "home"}
 <h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
 {/if} -->
 
 
 
-<h2 id="betatag"> v1.0.3 </h2>
+<h2 id="betatag"> v1.1-dev1 </h2>

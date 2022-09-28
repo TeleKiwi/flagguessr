@@ -1,6 +1,6 @@
 <script defer>
-    import { status, highScore, lastCorrectAnswer } from "../stores";
-    import { JSONList } from "../../public/countryList";
+    import { status, highScore, lastCorrectAnswer, points} from "../stores";
+    import { JSONList, countryPointValues } from "../../public/countryList";
 
     let streak = -1;
 
@@ -13,6 +13,16 @@
     let idk = false;
 
     function generate() {
+        if(!idk) {
+            if(country != "") { 
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + Object.keys(countryPointValues).indexOf(country)).toString())
+            } else if(hint && country != "") {
+                // only give half the points
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (Object.keys(countryPointValues).indexOf(country)) / 2).toString())
+            }
+        }
+
+        points.set(Number.parseInt(localStorage.getItem("points")))
         idk = false;
         hint = false;
         hintText = "Hint";
@@ -119,6 +129,8 @@
 </style>
 
 <h2> Using hints will RESET your streak!</h2>
+
+<h2> Points: {$points}</h2>
 
 {#if streak > 0}
 <h2> Streak: {streak} </h2>
