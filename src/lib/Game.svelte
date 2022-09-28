@@ -10,7 +10,7 @@
     let country = "";
     let countryImg;
 
-    let idk = false;
+    let idk = true;
 
     function generate() {
         if(!idk) {

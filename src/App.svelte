@@ -55,4 +55,4 @@
 
 
 
-<h2 id="betatag"> v1.1-dev1 </h2>
+<h2 id="betatag"> v1.1-dev2 </h2>

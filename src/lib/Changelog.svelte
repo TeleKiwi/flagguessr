@@ -6,11 +6,13 @@
         status.set("home");
     }
 </script>
+<h1> v1.1-dev2 </h1>
+<li> fixed you gaining points when you press "idk" on flag 1 </li>
 
 <h1> v1.1-dev1 </h1>
 <h2> The first of many. </h2>
-<li> - added in the points system </li>
-<li>    - you gain more/less points depending on how obscure the country is </li>
-<li>    - currently points are a bit pointless, but i'll probs add functionality soong </li>
-<li> - removed "high scores will be phased out in v1.1" flavor text</li>
+<li>  added in the points system </li>
+<li>     you gain more/less points depending on how obscure the country is </li>
+<li>     currently points are a bit pointless, but i'll probs add functionality soong </li>
+<li>  removed "high scores will be phased out in v1.1" flavor text</li>
 <button on:click|preventDefault="{goBack}"> Back </button>
