@@ -7,6 +7,9 @@
     }
 </script>
 
+<h1> v1.0.4 </h1>
+<li> The version number now sticks to the bottom left. </li>
+
 <h1> v1.0.3 </h1>
 <li> Fixed buttons having black text in dark mode. </li>
 <li> You now see the previous correct answer with the IDK button. </li>

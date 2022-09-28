@@ -11,7 +11,7 @@
 <style>
     #betatag {
         font-weight: 700;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         margin-left: 40px;
