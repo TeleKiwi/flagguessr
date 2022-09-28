@@ -6,6 +6,12 @@
         status.set("home");
     }
 </script>
+
+<h1> v1.1-dev3 </h1>
+<li> fixed points being implemented completely incorrectly </li>
+<li> added a visual indicator of how many points you have gained per answer </li>
+<li> actually fixed the bug from dev-2 </li>
+
 <h1> v1.1-dev2 </h1>
 <li> fixed you gaining points when you press "idk" on flag 1 </li>
 

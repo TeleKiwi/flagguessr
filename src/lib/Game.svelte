@@ -11,14 +11,17 @@
     let countryImg;
 
     let idk = true;
+    let bonus = "";
 
     function generate() {
+        let pointBonus = Object.values(countryPointValues)[Object.keys(countryPointValues).indexOf(country)];
+        pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
         if(!idk) {
-            if(country != "") { 
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + Object.keys(countryPointValues).indexOf(country)).toString())
-            } else if(hint && country != "") {
+            if(answer != "") { 
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + pointBonus).toString())
+            } else if(hint && answer != "") {
                 // only give half the points
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (Object.keys(countryPointValues).indexOf(country)) / 2).toString())
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + pointBonus / 2).toString())
             }
         }
 
@@ -126,11 +129,20 @@
     #hint {
         margin-top: 5px;
     }
+
+    #bonus {
+        color: lightgreen;
+    }
 </style>
 
 <h2> Using hints will RESET your streak!</h2>
 
 <h2> Points: {$points}</h2>
+
+{#if bonus !== ""}
+    <h2 id="bonus">{bonus}</h2>
+{/if}
+
 
 {#if streak > 0}
 <h2> Streak: {streak} </h2>
