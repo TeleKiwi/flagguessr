@@ -13,15 +13,18 @@
     let idk = true;
     let bonus = "";
 
+    let multiplier = 1;
+    
     function generate() {
         let pointBonus = Object.values(countryPointValues)[Object.keys(countryPointValues).indexOf(country)];
         pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
         if(!idk) {
+            if(streak % 5 === 0) { multiplier++; }
             if(answer != "") { 
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + pointBonus).toString())
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (pointBonus) * multiplier).toString())
             } else if(hint && answer != "") {
                 // only give half the points
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + pointBonus / 2).toString())
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (pointBonus / 2) * multiplier).toString())
             }
         }
 
@@ -139,7 +142,7 @@
 
 <h2> Points: {$points}</h2>
 
-{#if bonus !== ""}
+{#if bonus !== "" && !idk}
     <h2 id="bonus">{bonus}</h2>
 {/if}
 

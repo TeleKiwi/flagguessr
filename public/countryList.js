@@ -130,7 +130,7 @@ export const JSONList = {
     "MG": "Madagascar",
     "MW": "Malawi",
     "MY": "Malaysia",
-    "MV": "Maldives",
+    "MV": ["Maldives", "The Maldives"],
     "ML": "Mali",
     "MT": "Malta",
     "MH": "Marshall Islands",

@@ -7,6 +7,12 @@
     }
 </script>
 
+<h1> v1.1-dev4 </h1>
+<li> added a point multiplier </li>
+<li>     every 5 correct guesses, your multiplier increases by 1 </li>
+<li> fixed the point text displaying when idk is pressed </li>
+<li> "The Maldives" is now a valid answer for The Maldives</li>
+
 <h1> v1.1-dev3 </h1>
 <li> fixed points being implemented completely incorrectly </li>
 <li> added a visual indicator of how many points you have gained per answer </li>
