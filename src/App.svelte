@@ -43,4 +43,5 @@
 {/if}
 
 
+
 <h2 id="betatag"> v1.1-rc2 </h2>
