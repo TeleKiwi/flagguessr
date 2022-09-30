@@ -31,7 +31,7 @@
         color: white;
     } */
 </style>
-<h2> High-scores will be phased out in v1.1! </h2>
+<h2> v1.1 coming very soon! </h2>
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
 <button on:click|preventDefault="{changelog}"> View changelog </button>
