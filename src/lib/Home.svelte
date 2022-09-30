@@ -5,9 +5,9 @@
         status.set("play");
     } 
 
-    function warn() {
+    /* function warn() {
         status.set("warn");
-    } 
+    } */
 
     function changelog() {
         status.set("changelog");
@@ -31,7 +31,6 @@
         color: white;
     } */
 </style>
-<h2> v1.1 coming very soon! </h2>
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
 <button on:click|preventDefault="{changelog}"> View changelog </button>

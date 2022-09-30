@@ -1,6 +1,6 @@
 <script defer>
-    import { status, highScore, lastCorrectAnswer } from "../stores";
-    import { JSONList } from "../../public/countryList";
+    import { status, highScore, lastCorrectAnswer, points} from "../stores";
+    import { JSONList, countryPointValues } from "../../public/countryList";
 
     let streak = -1;
 
@@ -10,15 +10,45 @@
     let country = "";
     let countryImg;
 
-    let idk = false;
+    let idk = true;
+    let bonus = "";
+
+    let multiplier = 1;
+    
+    function reset(correct) {
+        lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        status.set("home");
+        if(streak > $highScore) { highScore.set(streak); }
+        localStorage.setItem("highscore", $highScore.toString())
+        streak = 0;
+    }
 
     function generate() {
+        let pointBonus = Object.values(countryPointValues)[Object.keys(countryPointValues).indexOf(country)];
+        if(!idk) {
+            if(streak % 4 == 0 && streak != 0) { multiplier++;  }
+            if(!hint) { 
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + ((pointBonus) * multiplier)).toString())
+            } else {
+                // only give half the points
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + ((pointBonus / 2) * multiplier)).toString())
+            }
+        }   
+        pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
+
+        points.set(Number.parseInt(localStorage.getItem("points")))
         idk = false;
         hint = false;
         hintText = "Hint";
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
-        country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        if(country === "NP") {
+            countryImg = "public/nepal.png";
+        } else if(country === "BE") {
+            countryImg = "public/belgium.png";
+        } else {
+            country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        }
     }
 
     generate();
@@ -28,21 +58,13 @@
     function submitAnswer() {
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(answer === null) { 
-            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
-            status.set("home");
-            if(streak > $highScore) { highScore.set(streak); }
-            localStorage.setItem("highscore", $highScore.toString())
-            streak = 0;
+            reset(correct)
         }
         if(typeof correct === "string") {
             if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
-                lastCorrectAnswer.set(`The correct answer was ${correct}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                reset(correct)
             }
         } else {
             let check = false;
@@ -52,11 +74,7 @@
                 }
             })
             if(!check) {
-                lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                reset(correct)
             } else {
                 generate();
             }
@@ -116,9 +134,20 @@
     #hint {
         margin-top: 5px;
     }
+
+    #bonus {
+        color: lightgreen;
+    }
 </style>
 
 <h2> Using hints will RESET your streak!</h2>
+
+<h2> Points: {$points}</h2>
+
+{#if bonus !== "" && !idk}
+    <h2 id="bonus">{bonus}</h2>
+{/if}
+
 
 {#if streak > 0}
 <h2> Streak: {streak} </h2>
