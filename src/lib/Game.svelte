@@ -15,6 +15,14 @@
 
     let multiplier = 1;
     
+    function reset(correct) {
+        lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        status.set("home");
+        if(streak > $highScore) { highScore.set(streak); }
+        localStorage.setItem("highscore", $highScore.toString())
+        streak = 0;
+    }
+
     function generate() {
         let pointBonus = Object.values(countryPointValues)[Object.keys(countryPointValues).indexOf(country)];
         pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
@@ -34,7 +42,11 @@
         hintText = "Hint";
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
-        country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        if(country === "NP") {
+            countryImg = "public/nepal.png";
+        } else {
+            country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        }
     }
 
     generate();
@@ -44,21 +56,13 @@
     function submitAnswer() {
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(answer === null) { 
-            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
-            status.set("home");
-            if(streak > $highScore) { highScore.set(streak); }
-            localStorage.setItem("highscore", $highScore.toString())
-            streak = 0;
+            reset(correct)
         }
         if(typeof correct === "string") {
             if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
-                lastCorrectAnswer.set(`The correct answer was ${correct}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                reset(correct)
             }
         } else {
             let check = false;
@@ -68,11 +72,7 @@
                 }
             })
             if(!check) {
-                lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                reset(correct)
             } else {
                 generate();
             }

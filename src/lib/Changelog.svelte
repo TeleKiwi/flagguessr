@@ -7,6 +7,12 @@
     }
 </script>
 
+<h1> v1.1-rc1 </h1>
+<h2> Almost ready! </h2>
+<li> new logo </li>
+<li> cleaned up codebase </li>
+<li> fixed Nepal's flag being large & non-transparant </li>
+
 <h1> v1.1-dev4 </h1>
 <li> added a point multiplier </li>
 <li>     every 5 correct guesses, your multiplier increases by 1 </li>
