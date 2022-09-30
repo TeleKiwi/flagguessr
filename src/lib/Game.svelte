@@ -25,24 +25,23 @@
 
     function generate() {
         let pointBonus = Object.values(countryPointValues)[Object.keys(countryPointValues).indexOf(country)];
-        pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
         if(!idk) {
-            if(streak % 5 === 0) { multiplier++; }
-            if(answer != "") { 
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (pointBonus) * multiplier).toString())
-            } else if(hint && answer != "") {
+            if(streak % 4 == 0 && streak != 0) { multiplier++;  }
+            if(!hint) { 
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + ((pointBonus) * multiplier)).toString())
+            } else {
                 // only give half the points
-                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + (pointBonus / 2) * multiplier).toString())
+                localStorage.setItem("points", (Number.parseInt(localStorage.getItem("points")) + ((pointBonus / 2) * multiplier)).toString())
             }
-        }
+        }   
+        pointBonus == undefined ? bonus = "" : bonus = `+${pointBonus}`
 
         points.set(Number.parseInt(localStorage.getItem("points")))
         idk = false;
         hint = false;
         hintText = "Hint";
         streak++
-        country = "BE";
-        // country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+        country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         if(country === "NP") {
             countryImg = "public/nepal.png";
         } else if(country === "BE") {

@@ -7,6 +7,12 @@
     }
 </script>
 
+<h1> v1.1-rc3 </h1>
+<li> fixed Belgium being the only flag </li>
+<li> fixed multipliers not working </li>
+<li> lowered the streak threshold from 5 to 4 </li>
+<li> fixed the point bonus display not taking the multiplier into account </li>
+
 <h1> v1.1-rc2 </h1>
 <li> purged frenzy mode from the files </li>
 <li> downscaled Belgium's flag </li>
