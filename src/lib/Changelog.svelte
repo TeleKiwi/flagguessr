@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.1-rc2 </h1>
+<li> purged frenzy mode from the files </li>
+<li> downscaled Belgium's flag </li>
+
 <h1> v1.1-rc1 </h1>
 <h2> Almost ready! </h2>
 <li> new logo </li>

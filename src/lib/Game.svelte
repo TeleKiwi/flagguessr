@@ -41,9 +41,12 @@
         hint = false;
         hintText = "Hint";
         streak++
-        country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+        country = "BE";
+        // country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
         if(country === "NP") {
             countryImg = "public/nepal.png";
+        } else if(country === "BE") {
+            countryImg = "public/belgium.png";
         } else {
             country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
         }

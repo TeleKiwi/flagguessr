@@ -3,7 +3,6 @@
     import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
-    import Warn from "./lib/Warn.svelte";
     import { highScore, lastCorrectAnswer, status, points } from "./stores"
 
     if(localStorage.getItem("points") == null) { localStorage.setItem("points", "0"); }
@@ -19,10 +18,6 @@
         margin-bottom: 40px;
     }
 
-    /* #frenzyh {
-        color: red;
-    } */
-
 </style>
 
 
@@ -31,8 +26,6 @@
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
-{:else if $status == "warn"}
-<Warn></Warn>
 {:else if $status == "changelog"}
 <Changelog></Changelog>
 {:else}
@@ -49,10 +42,5 @@
 <h2> Points: {$points}</h2>
 {/if}
 
-<!-- {#if $highScore > 0 && $status == "home"}
-<h2 id="frenzyh"> Frenzy high score: {$frenzyHighScore} </h2>
-{/if} -->
 
-
-
-<h2 id="betatag"> v1.1-rc1 </h2>
+<h2 id="betatag"> v1.1-rc2 </h2>
