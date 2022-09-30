@@ -31,8 +31,6 @@
         color: white;
     } */
 </style>
-
-
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
 <button on:click|preventDefault="{changelog}"> View changelog </button>
