@@ -5,7 +5,7 @@
     import Home from "./lib/Home.svelte";
     import { highScore, lastCorrectAnswer, status, points } from "./stores"
 
-    if(localStorage.getItem("points") == null) { localStorage.setItem("points", "0"); }
+    if($points == NaN) { points.set(0) }
     status.set("home");
 </script>
 <style>

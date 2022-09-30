@@ -16,7 +16,12 @@
     let multiplier = 1;
     
     function reset(correct) {
-        lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        if(typeof correct === "string") {
+            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        } else {
+            lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
+        }
+        
         status.set("home");
         if(streak > $highScore) { highScore.set(streak); }
         localStorage.setItem("highscore", $highScore.toString())
