@@ -44,4 +44,4 @@
 
 
 
-<h2 id="betatag"> v1.1 </h2>
+<h2 id="betatag"> v1.1.1 </h2>
