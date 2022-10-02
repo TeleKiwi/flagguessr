@@ -7,6 +7,9 @@
     }
 </script>
 
+<h1> v1.1.1 </h1>
+<li> tried to fix a bug in which nepal's flag wouldn't load </li>
+
 <h1> v1.1 </h1>
 <h2> The Points Update! </h2>
 <li> No changes from v1.1-rc3. </li>
