@@ -5,9 +5,9 @@
         status.set("play");
     } 
 
-    function warn() {
+    /* function warn() {
         status.set("warn");
-    } 
+    } */
 
     function changelog() {
         status.set("changelog");
