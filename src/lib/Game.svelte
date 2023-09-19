@@ -18,31 +18,38 @@
         hintText = "Hint";
         streak++
         country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
-        country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        if(country === "NP") {
+            countryImg = "public/nepal.png";
+        } else if (country === "BE") {
+            countryImg = "public/belgium.png"
+        } {
+            country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        }
     }
 
     generate();
     
     let answer = "";
 
-    function submitAnswer() {
-        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
-        if(answer === null) { 
+    function submitAnswer(loserFlag = false) {
+
+        function goHome() {
             lastCorrectAnswer.set(`The correct answer was ${correct}.`)
             status.set("home");
-            if(streak > $highScore) { highScore.set(streak); }
+            if(streak > $highScore && !loserFlag) { highScore.set(streak); }
             localStorage.setItem("highscore", $highScore.toString())
             streak = 0;
+        }
+
+        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        if(answer === null) { 
+            goHome(true);
         }
         if(typeof correct === "string") {
             if(correct.toLowerCase() === answer.toLowerCase()) {
                 generate();
             } else {
-                lastCorrectAnswer.set(`The correct answer was ${correct}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                goHome();
             }
         } else {
             let check = false;
@@ -52,17 +59,14 @@
                 }
             })
             if(!check) {
-                lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
-                status.set("home");
-                if(streak > $highScore) { highScore.set(streak); }
-                localStorage.setItem("highscore", $highScore.toString())
-                streak = 0;
+                goHome();
             } else {
                 generate();
             }
         }
         answer = "";
     }
+
 
     
     function giveHint() {
@@ -95,6 +99,11 @@
         idk = true;
         answer = "";
     }
+
+    function giveUp() {
+        answer = "";
+        submitAnswer(true);
+    }
 </script>
 
 <style lang="scss">
@@ -115,6 +124,10 @@
 
     #hint {
         margin-top: 5px;
+    }
+    
+    #loser {
+        background-color: red;
     }
 </style>
 
@@ -139,3 +152,4 @@
 
 <button id="hint" on:click|preventDefault="{giveHint}"> {hintText} </button>
 <button on:click|preventDefault="{skip}"> I don't know</button>
+<button id="loser" on:click|preventDefault="{giveUp}">I give up</button>
