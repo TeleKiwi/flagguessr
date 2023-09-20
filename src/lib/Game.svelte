@@ -14,13 +14,23 @@
     let idk = false;
     lastCorrectAnswer.set("")
 
+    let lastCountryList = new Array(5).fill("");
+
     function generate() {
         idk = false;
         hint = false;
         hintText = "Hint";
         streak++
         console.log(streak)
-        country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+        do {
+            country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+            if(!lastCountryList.includes(country)) {
+                break;
+            }
+        } while(true)
+        lastCountryList.shift();
+        lastCountryList.push(country);
+        console.log(lastCountryList)
         if(country === "NP") {
             countryImg = "public/nepal.png";
         } else if (country === "BE") {
