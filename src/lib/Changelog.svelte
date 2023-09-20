@@ -7,6 +7,17 @@
     }
 </script>
 
+<h1> v1.0.7 </h1>
+<h2> Woah, is this maintainence? </h2>
+<h3> You no longer have to get a spelling exactly right! </h3>
+<li> Thanks to a new word estimation algorithm, you can spell a country's name sorta wrong and still get the question right!</li>
+<li> It even tells you the correct spelling! </li>
+<h3> More random, more fun! </h3>
+<li> There is no longer a chance to get a flag twice or more in a row. </li>
+<li> After a flag shows up, atleast 4 different flags must appear to see that same flag again. </li>
+<h3> Misc improvements! </h3>
+<li> Cleaned up the codebase</li>
+
 <h1> v1.0.6.2 </h1>
 <h2><em> f e a t u r e s</em></h2>
 <li> [for developers] Added a option to host Flagguessr locally on mobile</li>

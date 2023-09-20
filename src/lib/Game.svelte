@@ -1,6 +1,7 @@
 <script defer>
     import { status, highScore, lastCorrectAnswer } from "../stores";
     import { JSONList } from "../../public/countryList";
+    import { FuzzySet } from "./js/fuzzyset";
 
     let streak = -1;
 
@@ -11,13 +12,25 @@
     let countryImg;
 
     let idk = false;
+    lastCorrectAnswer.set("")
+
+    let lastCountryList = new Array(5).fill("");
 
     function generate() {
         idk = false;
         hint = false;
         hintText = "Hint";
         streak++
-        country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+        console.log(streak)
+        do {
+            country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
+            if(!lastCountryList.includes(country)) {
+                break;
+            }
+        } while(true)
+        lastCountryList.shift();
+        lastCountryList.push(country);
+        console.log(lastCountryList)
         if(country === "NP") {
             countryImg = "public/nepal.png";
         } else if (country === "BE") {
@@ -33,13 +46,13 @@
 
     function submitAnswer(loserFlag = false) {
 
-        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        let temp = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)]
+        let correct = typeof temp === "string" ? [temp] : temp;
         
-        function goHome() {
-            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        function goHome(loserFlag = false) {
+            lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
             status.set("home");
-            if(streak > $highScore && !loserFlag) { highScore.set(streak); }
-            localStorage.setItem("highscore", $highScore.toString())
+            if(streak > $highScore && !loserFlag) { highScore.set(streak); localStorage.setItem("highscore", $highScore.toString()) }
             streak = 0;
         }
 
@@ -47,24 +60,29 @@
         if(answer === null) { 
             goHome(true);
         }
-        if(typeof correct === "string") {
-            if(correct.toLowerCase() === answer.toLowerCase()) {
+
+        let earlyReturn = false;
+        correct.forEach((valid) => {
+            if(answer.toLowerCase() === valid.toLowerCase()) {
                 generate();
-            } else {
-                goHome();
+                earlyReturn = true;
             }
-        } else {
-            let check = false;
-            correct.forEach((e) => {
-                if(e.toLowerCase() === answer.toLowerCase()) {
-                    check = true;
-                }
-            })
-            if(!check) {
-                goHome();
-            } else {
-                generate();
-            }
+        })
+        
+        if(earlyReturn) {
+            answer = "";
+            return;
+        }
+
+        let answersAsFuzzySet = FuzzySet(
+            correct
+        );
+        const strength = answersAsFuzzySet.get(answer);
+        if(strength) {
+            lastCorrectAnswer.set(`You got the answer, but the correct spelling is ${correct[0]}.`)
+            generate();
+        } else{
+            goHome(true);
         }
         answer = "";
     }
@@ -139,9 +157,7 @@
 <h2> Streak: {streak} </h2>
 {/if}
 
-{#if idk == true}
 <h2> {$lastCorrectAnswer} </h2>
-{/if}
 
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
