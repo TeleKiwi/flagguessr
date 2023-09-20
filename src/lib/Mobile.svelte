@@ -6,6 +6,8 @@
 
 <style lang="scss">
     #mobile {
-        size: 50svh
+        transform: scale(0.6);
+        position: relative;
+        left: -100px;
     }
 </style>

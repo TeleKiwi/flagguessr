@@ -7,6 +7,11 @@
     }
 </script>
 
+<h1> v1.0.6.2 </h1>
+<h2><em> f e a t u r e s</em></h2>
+<li> [for developers] Added a option to host Flagguessr locally on mobile</li>
+<li> The version number is now sticky to the bottom left corner (like in v1.1)</li>
+
 <h1> v1.0.6.1 </h1>
 <h2> CRITICAL BUGFIX PATCH FOR THE CRITICAL BUGFIX PATCH </h2>
 <li> Fixed the scaling for the "mobile unsupported" page.</li>

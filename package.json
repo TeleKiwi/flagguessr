@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "mobile": "vite --host",    
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "bun x gh-pages -d dist",

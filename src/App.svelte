@@ -9,9 +9,10 @@
     status.set("home");
 </script>
 <style>
+
     #betatag {
         font-weight: 700;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         margin-left: 40px;
@@ -46,4 +47,4 @@
 <h2> High score: {$highScore} </h2>
 {/if}
 
-<h2 id="betatag"> v1.0.6.1 </h2>
+<h2 id="betatag"> v1.0.6.2 </h2>
