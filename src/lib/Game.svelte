@@ -12,6 +12,7 @@
     let countryImg;
 
     let idk = false;
+    lastCorrectAnswer.set("")
 
     function generate() {
         idk = false;
@@ -38,8 +39,8 @@
         let temp = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)]
         let correct = typeof temp === "string" ? [temp] : temp;
         
-        function goHome(loserflag = false) {
-            lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+        function goHome(loserFlag = false) {
+            lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
             status.set("home");
             if(streak > $highScore && !loserFlag) { highScore.set(streak); localStorage.setItem("highscore", $highScore.toString()) }
             streak = 0;
@@ -146,9 +147,7 @@
 <h2> Streak: {streak} </h2>
 {/if}
 
-{#if idk == true}
 <h2> {$lastCorrectAnswer} </h2>
-{/if}
 
 <h1> What country is this? </h1>
 <img id="country" src="{countryImg}" alt="country"/>
