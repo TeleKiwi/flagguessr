@@ -7,6 +7,9 @@
     }
 </script>
 
+<h1> v1.0.7-hotfix </h1>
+<li> Removed some development artifacts </li>
+
 <h1> v1.0.7 </h1>
 <h2> Woah, is this maintainence? </h2>
 <h3> You no longer have to get a spelling exactly right! </h3>
