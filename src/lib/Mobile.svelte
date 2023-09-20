@@ -6,6 +6,6 @@
 
 <style lang="scss">
     #mobile {
-        size: 80svh
+        size: 50svh
     }
 </style>
