@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.0.6.1 </h1>
+<h2> CRITICAL BUGFIX PATCH FOR THE CRITICAL BUGFIX PATCH </h2>
+<li> Fixed the scaling for the "mobile unsupported" page.</li>
+
 <h1> v1.0.6 </h1>
 <h2> CRITICAL BUGFIX PATCH </h2>
 <li> Flagguessr is now no longer playable on mobile devices.</li>
