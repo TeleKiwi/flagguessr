@@ -7,6 +7,9 @@
     }
 </script>
 
+<h1> v1.0.7-hotfix2 </h1>
+<li> Fixed the word estimation HUD text not disappearing properly </li>
+
 <h1> v1.0.7-hotfix </h1>
 <li> Removed some development artifacts </li>
 

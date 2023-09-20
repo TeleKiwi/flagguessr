@@ -5,6 +5,8 @@
 
     let streak = -1;
 
+    let tempSavedCountry = ""
+
     let hint = false;
     let hintText = "Hint";
 
@@ -29,6 +31,9 @@
         } while(true)
         lastCountryList.shift();
         lastCountryList.push(country);
+        if(lastCountryList[2] == tempSavedCountry) {
+            lastCorrectAnswer.set("");
+        }
         if(country === "NP") {
             countryImg = "public/nepal.png";
         } else if (country === "BE") {
@@ -78,6 +83,7 @@
         const strength = answersAsFuzzySet.get(answer);
         if(strength) {
             lastCorrectAnswer.set(`You got the answer, but the correct spelling is ${correct[0]}.`)
+            tempSavedCountry = country;
             generate();
         } else{
             goHome(true);
@@ -108,8 +114,10 @@
         let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
         if(typeof correct === "string") {
             lastCorrectAnswer.set(`The correct answer was ${correct}.`)
+            tempSavedCountry = country;
         } else {
             lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
+            tempSavedCountry = country;
         }
         
         streak = -1;
