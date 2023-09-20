@@ -21,7 +21,6 @@
         hint = false;
         hintText = "Hint";
         streak++
-        console.log(streak)
         do {
             country = Object.keys(JSONList)[Math.floor(Math.random() * Object.keys(JSONList).length)];
             if(!lastCountryList.includes(country)) {
@@ -30,7 +29,6 @@
         } while(true)
         lastCountryList.shift();
         lastCountryList.push(country);
-        console.log(lastCountryList)
         if(country === "NP") {
             countryImg = "public/nepal.png";
         } else if (country === "BE") {
