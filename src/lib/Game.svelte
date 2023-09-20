@@ -33,6 +33,8 @@
 
     function submitAnswer(loserFlag = false) {
 
+        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        
         function goHome() {
             lastCorrectAnswer.set(`The correct answer was ${correct}.`)
             status.set("home");
@@ -41,7 +43,7 @@
             streak = 0;
         }
 
-        let correct = Object.values(JSONList)[Object.keys(JSONList).indexOf(country)];
+        
         if(answer === null) { 
             goHome(true);
         }

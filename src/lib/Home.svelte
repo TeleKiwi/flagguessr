@@ -1,12 +1,13 @@
 <script>
     import { status, lastCorrectAnswer } from "../stores";
 
+    // https://dev.to/timhuang/a-simple-way-to-detect-if-browser-is-on-a-mobile-device-with-javascript-44j3
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        status.set("unsupported")
+    }
+
     function startGame() {
         status.set("play");
-    } 
-
-    function warn() {
-        status.set("warn");
     } 
 
     function changelog() {
@@ -31,7 +32,6 @@
         color: white;
     } */
 </style>
-<h2> Welcome back. </h2>
 <img id="title" src="flagguessrdark.png" alt="flagguessr">
 <button on:click|preventDefault="{startGame}"> Classic Mode </button>
 <button on:click|preventDefault="{changelog}"> View changelog </button>

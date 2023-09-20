@@ -3,6 +3,7 @@
     import Error from "./lib/Error.svelte";
     import Game from "./lib/Game.svelte";
     import Home from "./lib/Home.svelte";
+    import Mobile from "./lib/Mobile.svelte";
     import { highScore, lastCorrectAnswer, status } from "./stores"
 
     status.set("home");
@@ -33,6 +34,8 @@
 <Warn></Warn>
 {:else if $status == "changelog"}
 <Changelog></Changelog>
+{:else if $status == "unsupported"}
+<Mobile></Mobile>
 {:else}
 <Error></Error>
 {/if}
@@ -43,4 +46,4 @@
 <h2> High score: {$highScore} </h2>
 {/if}
 
-<h2 id="betatag"> v1.0.5 </h2>
+<h2 id="betatag"> v1.0.6 </h2>

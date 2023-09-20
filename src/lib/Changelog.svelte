@@ -7,6 +7,13 @@
     }
 </script>
 
+<h1> v1.0.6 </h1>
+<h2> CRITICAL BUGFIX PATCH </h2>
+<li> Flagguessr is now no longer playable on mobile devices.</li>
+<li> Fixed the "The correct answer was [x]" text displaying all possible answers instead of one.</li>
+<li> Added more accepted answers. </li>
+
+
 <h1> v1.0.5 </h1>
 <h2> Welcome back!</h2>
 <li> Flagguessr has relaunched, and reset to the more stable v1.0.x </li>
