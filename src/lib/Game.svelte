@@ -38,8 +38,10 @@
             countryImg = "public/nepal.png";
         } else if (country === "BE") {
             countryImg = "public/belgium.png"
-        } {
-            country === "CH" ? countryImg = `https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png` : countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
+        } else if (country === "CH") {
+            countryImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/480px-Flag_of_Switzerland.svg.png`"
+        } else {
+            countryImg = `https://flagpedia.net/data/flags/w580/${country.toLowerCase()}.webp`
         }
     }
 
@@ -56,7 +58,7 @@
             lastCorrectAnswer.set(`The correct answer was ${correct[0]}.`)
             status.set("home");
             if(streak > $highScore && !loserFlag) { highScore.set(streak); localStorage.setItem("highscore", $highScore.toString()) }
-            streak = 0;
+            streak = -1;
         }
 
         
@@ -83,6 +85,7 @@
         const strength = answersAsFuzzySet.get(answer);
         if(strength) {
             lastCorrectAnswer.set(`You got the answer, but the correct spelling is ${correct[0]}.`)
+
             tempSavedCountry = country;
             generate();
         } else{
@@ -94,7 +97,7 @@
 
     
     function giveHint() {
-        streak = 0;
+        streak = -1;
         if(hint) {
             hint = !hint;
             hintText = "Hint";

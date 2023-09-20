@@ -31,8 +31,6 @@
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
-{:else if $status == "warn"}
-<Warn></Warn>
 {:else if $status == "changelog"}
 <Changelog></Changelog>
 {:else if $status == "unsupported"}
