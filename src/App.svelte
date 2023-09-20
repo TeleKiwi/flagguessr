@@ -45,4 +45,4 @@
 <h2> High score: {$highScore} </h2>
 {/if}
 
-<h2 id="betatag"> v1.0.7-hotfix2 </h2>
+<h2 id="betatag"> v1.0.7.1 </h2>
