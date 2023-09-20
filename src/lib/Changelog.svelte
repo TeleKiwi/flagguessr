@@ -27,7 +27,7 @@
 <h1> v1.0.6.2 </h1>
 <h2><em> f e a t u r e s</em></h2>
 <li> [for developers] Added a option to host Flagguessr locally on mobile</li>
-<li> The version number is now sticky to the bottom left corner (like in v1.1)</li>
+<li> The version number is now sticky to the bottom left corner (like in the old v1.1)</li>
 
 <h1> v1.0.6.1 </h1>
 <h2> CRITICAL BUGFIX PATCH FOR THE CRITICAL BUGFIX PATCH </h2>
@@ -46,7 +46,7 @@
 <li> However, some QOL changes and bugfixes from v1.1 have been implemented. </li>
 <li> There are currently no plans to maintain this version any further. </li>
 <h2> Actual changes </h2>
-<h3> From v1.1 </h3>
+<h3> From the old v1.1 </h3>
 <li> "The Maldives" is now a valid answer for "The Maldives"</li>
 <li> Reduced the size of the Nepali and Belgian flags </li>
 <li> Removed all references to Frenzy Mode</li>
