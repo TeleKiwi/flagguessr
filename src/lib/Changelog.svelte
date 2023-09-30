@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.0.7.2 </h1>
+<li> [for developers] Added an indicator for when Flagguessr is being hosted locally </li>
+<li> Various other minor changes </li>
+
 <h1> v1.0.7.1 </h1>
 <li> Various minor changes & fixes</li>
 

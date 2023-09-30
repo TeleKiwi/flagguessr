@@ -1,6 +1,6 @@
 <script defer>
     import { status, highScore, lastCorrectAnswer } from "../stores";
-    import { JSONList } from "../../public/countryList";
+    import { JSONList } from "../../private/countryList";
     import { FuzzySet } from "./js/fuzzyset";
 
     let streak = -1;
