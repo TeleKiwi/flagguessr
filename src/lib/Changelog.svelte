@@ -7,6 +7,10 @@
     }
 </script>
 
+<h1> v1.0.7.2-hotfix</h1>
+<h2> These version numbers are getting ridiculous.</h2>
+<h2> Fixed the indicator always displaying </h2>
+
 <h1> v1.0.7.2 </h1>
 <li> [for developers] Added an indicator for when Flagguessr is being hosted locally </li>
 <li> Various other minor changes </li>
