@@ -7,6 +7,25 @@
     }
 </script>
 
+<style>
+    #back {
+        font-weight: 700;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin-left: 1250px;
+        margin-bottom: 40px;
+    }
+</style>
+
+<h1> v1.0.8 </h1>
+<h2> I LOVE REFACTORING!! </h2>
+<li> The entirety of the main game's source code has been rewritten. </li>
+<li> You shouldn't notice a thing, but it'll make my life (as a developer) wayy easier. </li>
+<li> Especially since I have some major plans for the next major update... </li>
+<h3> Other </h3>
+<li> The "back" button on this page is now sticky to the bottom right. </li>
+
 <h1> v1.0.7.2-hotfix</h1>
 <h2> These version numbers are getting ridiculous.</h2>
 <li> Fixed the indicator always displaying </li>
@@ -50,7 +69,6 @@
 <li> Fixed the "The correct answer was [x]" text displaying all possible answers instead of one.</li>
 <li> Added more accepted answers. </li>
 
-
 <h1> v1.0.5 </h1>
 <h2> Welcome back!</h2>
 <li> Flagguessr has relaunched, and reset to the more stable v1.0.x </li>
@@ -67,4 +85,4 @@
 <li> Cleaned up the code. </li>
 
 
-<button on:click|preventDefault="{goBack}"> Back </button>
+<button id="back" on:click|preventDefault="{goBack}"> Back </button>
