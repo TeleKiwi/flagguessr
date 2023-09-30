@@ -1,6 +1,6 @@
 // https://github.com/Glench/fuzzyset.js/blob/master/dist/fuzzyset.js 
 // FUZZYSET V1.0.7
-
+//@ts-nocheck
 export var FuzzySet = (function () {
     'use strict';
   

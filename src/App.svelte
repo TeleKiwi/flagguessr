@@ -1,9 +1,9 @@
 <script>
-    import Changelog from "./lib/Changelog.svelte";
-    import Error from "./lib/Error.svelte";
-    import Game from "./lib/Game.svelte";
-    import Home from "./lib/Home.svelte";
-    import Mobile from "./lib/Mobile.svelte";
+    import Changelog from "./routes/Changelog.svelte";
+    import Error from "./routes/Error.svelte";
+    import Game from "./routes/Game.svelte";
+    import Home from "./routes/Home.svelte";
+    import Mobile from "./routes/Mobile.svelte";
     import { highScore, lastCorrectAnswer, status } from "./stores"
 
     status.set("home");

@@ -1,4 +1,4 @@
-export const JSONList = {
+export const countryCodeToCountryNameMap = {
     "AF": "Afghanistan",
     "AX": ["Åland Islands", "Aland Islands"],
     "AL": "Albania",
