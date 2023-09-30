@@ -36,7 +36,9 @@
 
 {#if $status == "home"}
 <h2>{$lastCorrectAnswer}</h2>
+{#if buildStatus}
 <h2 id="developer"> Hey there, developer! </h2>
+{/if}
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
