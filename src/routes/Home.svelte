@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import { status } from "../stores";
 
     // https://dev.to/timhuang/a-simple-way-to-detect-if-browser-is-on-a-mobile-device-with-javascript-44j3
@@ -39,6 +39,9 @@
 
 <!-- <button id="frenzy" on:click|preventDefault="{warn}"> Frenzy Mode </button> -->
 
+<script> 
+import Broken from "./Broken.svelte"
+</script>
 
 
-
+<Broken> </Broken>

@@ -70,7 +70,6 @@
 
     function submitAnswer(globalLoserFlag = false) {
         let correctAnswer = getNameFromCode(country.code)
-
         function goHome(loserFlag = false) {
             lastCorrectAnswer.set(`The correct answer was ${correctAnswer[0]}.`);
             status.set("home");
@@ -80,33 +79,41 @@
             }
             streak = -1;
         }
-
-        if(userAnswer === null || globalLoserFlag) {goHome(true)}
+        if(userAnswer === "" || globalLoserFlag) {goHome(true)}
 
         function weighAnswers(correctAnswers) {
             let finalWeight = 0;
-            for(const answer in correctAnswers) {
+            for(let i = 0; i < correctAnswers.length; i++) {
+                const answer = correctAnswers[i]
                 const weight = fuzzysort.single(answer.toLowerCase(), userAnswer.toLowerCase());
-                if(weight.score === 0) {
-                    // there was an exact match
-                    return 0;
+                switch(weight?.score) {
+                    case null:
+                        // big big bad
+                        finalWeight -= 1000;
+                        break;
+                    case 0:
+                        // perfect godd
+                        return 0;
+                    default:
+                        finalWeight += weight?.score;
+                        break;
                 }
-                finalWeight += weight.score;
+                
             }
             return finalWeight;
         }
 
 
-        //@ts-ignore
         const strength = weighAnswers(correctAnswer);
+        console.log(`strength is ${strength}`)
         userAnswer = "";
         switch(true) {
-            case strength === 0:
+            case (strength === 0):
                 // perfect match
                 country.previousCode = country.code;
                 generate();
                 break;
-            case strength > -50:
+            case (strength > -1000):
                 // weak match
                 lastCorrectAnswer.set(`You got the answer, but the correct spelling is "${correctAnswer[0]}".`)
                 country.previousCode = country.code;
