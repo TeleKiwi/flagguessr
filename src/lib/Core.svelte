@@ -4,8 +4,7 @@
         getRandomCountryCode,
         getNameFromCode,
     } from "./typescript/countryListGrabber";
-    import { FuzzySet } from "./typescript/fuzzyset";
-
+    import fuzzysort from "fuzzysort";
     //* reset & initialise
 
     let streak = -1;
@@ -69,51 +68,56 @@
     generate();
     let userAnswer = "";
 
-    function submitAnswer(loserFlag = false) {
+    function submitAnswer(globalLoserFlag = false) {
         let correctAnswer = getNameFromCode(country.code)
 
         function goHome(loserFlag = false) {
             lastCorrectAnswer.set(`The correct answer was ${correctAnswer[0]}.`);
             status.set("home");
-            if (streak > $highScore && !loserFlag) {
+            if (streak > $highScore && loserFlag) {
                 highScore.set(streak);
                 localStorage.setItem("highscore", $highScore.toString());
             }
             streak = -1;
         }
 
-        if(userAnswer === null) {goHome(true)}
+        if(userAnswer === null || globalLoserFlag) {goHome(true)}
 
-        let earlyReturn = false;
-        correctAnswer.forEach((valid) => {
-            if(userAnswer.toLowerCase() === valid.toLowerCase()) {
-                generate();
-                earlyReturn = true;
+        function weighAnswers(correctAnswers) {
+            let finalWeight = 0;
+            for(const answer in correctAnswers) {
+                const weight = fuzzysort.single(answer.toLowerCase(), userAnswer.toLowerCase());
+                if(weight.score === 0) {
+                    // there was an exact match
+                    return 0;
+                }
+                finalWeight += weight.score;
             }
-        })
-        
-        if(earlyReturn) {
-            userAnswer = "";
-            return;
+            return finalWeight;
         }
 
-        let answersAsFuzzySet = FuzzySet(
-            correctAnswer,
-            true,
-            2,
-            3
-        );
-        
+
         //@ts-ignore
-        const strength = answersAsFuzzySet.get(userAnswer);
-        if(strength) {
-            lastCorrectAnswer.set(`You got the answer, but the correct spelling is "${correctAnswer[0]}".`)
-            country.previousCode = country.code;
-            generate();
-        } else{
-            goHome(true);
-        }
+        const strength = weighAnswers(correctAnswer);
         userAnswer = "";
+        switch(true) {
+            case strength === 0:
+                // perfect match
+                country.previousCode = country.code;
+                generate();
+                break;
+            case strength > -50:
+                // weak match
+                lastCorrectAnswer.set(`You got the answer, but the correct spelling is "${correctAnswer[0]}".`)
+                country.previousCode = country.code;
+                generate();
+                break;
+            default:
+                // fail
+                goHome();
+                break;
+        }
+        
     }
 
 

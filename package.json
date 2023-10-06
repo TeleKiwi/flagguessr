@@ -1,15 +1,6 @@
 {
   "name": "flagguessr",
   "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "mobile": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "bun x gh-pages -d dist",
-    "ship": "bun run build && bun run deploy"
-  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "gh-pages": "^4.0.0",
@@ -18,7 +9,16 @@
     "svelte-preprocess": "^4.10.7",
     "vite": "^3.1.0"
   },
+  "scripts": {
+    "dev": "vite",
+    "mobile": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "bun x gh-pages -d dist",
+    "ship": "bun run build && bun run deploy"
+  },
+  "type": "module",
   "dependencies": {
-    "fuzzyset.js": "^1.0.7"
+    "fuzzysort": "^2.0.4"
   }
 }
