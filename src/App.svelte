@@ -8,8 +8,8 @@
 
     status.set("home");
 
-    const buildStatus = import.meta.env.DEV
-    const verNumber = import.meta.env.VITE_FLAGGUESSR_VERSION;
+    const buildStatus = false
+    // const verNumber = "1.0.8";
     
 </script>
 <style>
@@ -36,9 +36,6 @@
 
 {#if $status == "home"}
 <h2>{$lastCorrectAnswer}</h2>
-{#if buildStatus}
-<h2 id="developer"> Hey there, developer! </h2>
-{/if}
 <Home></Home>
 {:else if $status == "play"}
 <Game></Game>
@@ -57,8 +54,8 @@
 {/if}
 
 
-{#if buildStatus}
+<!-- {#if buildStatus}
 <h2 id="betatag"> {`${verNumber} (localhost)`} </h2>
 {:else}
 <h2 id="betatag"> {verNumber} </h2>
-{/if}
+{/if} -->

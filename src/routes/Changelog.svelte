@@ -22,7 +22,6 @@
 <h2> I LOVE REFACTORING!! </h2>
 <li> The entirety of the main game's source code has been rewritten. </li>
 <li> You shouldn't notice a thing, but it'll make my life (as a developer) wayy easier. </li>
-<li> Especially since I have some major plans for the next major update... </li>
 <h3> Other </h3>
 <li> The "back" button on this page is now sticky to the bottom right. </li>
 
